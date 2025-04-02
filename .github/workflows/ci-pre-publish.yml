@@ -1,32 +1,29 @@
-name: publish trrex package to PyPI
+name: publish trrex package to TestPyPI
 
 on:
   workflow_dispatch:
-  release:
-    types: [created]
 
+permissions:
+  contents: read
 
 jobs:
-  publish:
-    name: publish trrex to PyPI
+  release:
+    name: release trrex to TestPyPI
     runs-on: ubuntu-latest
-    environment: publish
+    environment:
+      name: pre-release
     permissions:
       id-token: write
-
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
-
       - name: install uv
         uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
-
       - name: publish package
         run: |
           uv build
-          uv publish --trusted-publishing always
+          uv publish --publish-url https://test.pypi.org/legacy/ --trusted-publishing always
