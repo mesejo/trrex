@@ -28,10 +28,10 @@ jobs:
       - run: uv build
 
       - name: Smoke test (wheel)
-        run: uv run --isolated --no-project -p 3.12 --with dist/*.whl
+        run: uv run --isolated --no-project -p 3.12 --with dist/*.whl pytest tests/test_basic_functions.py
 
       - name: Smoke test (source distribution)
-        run: uv run --isolated --no-project -p 3.12 --with dist/*.tar.gz
+        run: uv run --isolated --no-project -p 3.12 --with dist/*.tar.gz pytest tests/test_basic_functions.py
 
       - name: publish package
         run: uv publish --trusted-publishing always

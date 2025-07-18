@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "trrex"
-version = "0.0.6"
+version = "0.0.7"
 description = "Transform set of words to efficient regular expression"
 authors = [
     {name = "Daniel Mesejo", email = "mesejoleon@gmail.com"},
