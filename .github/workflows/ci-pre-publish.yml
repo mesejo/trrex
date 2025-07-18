@@ -23,7 +23,14 @@ jobs:
         uses: astral-sh/setup-uv@v6
         with:
           enable-cache: true
+
+      - run: uv build
+
+      - name: Smoke test (wheel)
+        run: uv run --isolated --no-project -p 3.12 --with dist/*.whl pytest
+
+      - name: Smoke test (source distribution)
+        run: uv run --isolated --no-project -p 3.12 --with dist/*.tar.gz pytest
+
       - name: publish package
-        run: |
-          uv build
-          uv publish --publish-url https://test.pypi.org/legacy/ --trusted-publishing always
+        run: uv publish --publish-url https://test.pypi.org/legacy/ --trusted-publishing always
