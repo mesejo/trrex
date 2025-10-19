@@ -4,14 +4,14 @@ By default, trrex will use word boundaries `"(\\b)"` to delimit keywords,
 this could be problematic if the words contain punctuation symbols. You
 can do the following for those cases:
 
-```
-python
+```python
+import trrex as tx
+import re
 
-import trrex as tx import re
-
-emoticons = \[\":)\", \":D\", \":(\"\]
+emoticons = [":)", ":D", ":("]
 pattern = tx.make(emoticons,
-prefix=r\"(?\<!w)\", suffix=r\"(?!w)\")
+                  prefix=r"(?<!w)",
+                  suffix=r"(?!w)")
 result = re.findall(pattern, "The smile :), and the laugh :D and the sad :(")
 ```
 
@@ -22,14 +22,14 @@ In general, however, the regex meta characters need to be escaped in
 order to match them:
 
 ```python
-
 words = ["bab.y", "b#ad", "b?at"]
-pattern = tx.make(map(re.escape, words))
+# apply re.escape to each character of each word
+pattern = tx.make(tuple(map(re.escape, word)) for word in words)
 ```
 
-Notice that you need to use
-[re.escape](https://docs.python.org/3/library/re.html#re.escape) for
-each character of the string in order to work properly with trrex.
+Notice that you need to apply
+[re.escape](https://docs.python.org/3/library/re.html#re.escape) to
+*each character of each string* in order to work properly with trrex.
 
 ## How not to use it
 
