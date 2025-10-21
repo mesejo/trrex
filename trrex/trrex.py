@@ -81,13 +81,14 @@ class _Trie:
         return f"{self._to_regex()}{self.right}"
 
 
-def make(words: Sequence[str], prefix: str = r"\b", suffix: str = r"\b"):
+def make(words: Sequence[str]|Sequence[Tuple[str, ...]], prefix: str = r"\b", suffix: str = r"\b"):
     """Create a string that represents a regular expression object from a set of strings
 
     Parameters
     ----------
-    words : Sequence[str]
-        Sequence or set of strings to be made into a regex
+    words : Sequence[str]|Sequence[tuple[str, ...]
+        Sequence or set of strings to be made into a regex.  Tuples are also
+        accepted in order to support escaping of special characters.
 
     prefix : str, optional
            Left delimiter for pattern
