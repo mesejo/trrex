@@ -79,7 +79,7 @@ pure-eval==0.2.3
 pydantic==2.10.6
 pydantic-core==2.27.2
 pygments==2.18.0
-pymdown-extensions==10.14.3
+pymdown-extensions==10.16.1
 pyparsing==3.2.0
 pytest==8.3.4
 pytest-cov==6.0.0
