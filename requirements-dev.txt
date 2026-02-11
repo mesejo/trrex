@@ -24,7 +24,7 @@ numpy==2.2.1
 packaging==24.2
 pandas==2.2.3
 perfplot==0.10.2
-pillow==11.0.0
+pillow==12.1.1
 platformdirs==4.3.6
 pluggy==1.5.0
 pre-commit==4.0.1
