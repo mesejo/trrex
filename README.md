@@ -33,7 +33,7 @@ import re
 
 pattern = tx.make(['baby', 'bat', 'bad'])
 hits = re.findall(pattern, 'The baby was scared by the bad bat.')
-# hits = ['baby', 'bat', 'bad']
+# hits = ['baby', 'bad', 'bat']
 ```
 
 ### pandas
@@ -49,7 +49,7 @@ pattern = tx.make(['baby', 'bat', 'bad'], prefix=r"\b(", suffix=r")\b") # need t
 frame["match"] = frame["txt"].str.extract(pattern)
 hits = frame["match"].tolist()
 print(hits)
-# hits = ['baby', 'bad']
+# hits = ['baby', 'bat']
 ```
 
 ## Why use trrex?
